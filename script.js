@@ -65,25 +65,34 @@ document.addEventListener('DOMContentLoaded', function () {
   updateCarousel();
   resetAutoPlay();
 
-  // Language toggle functionality
+  // Language toggle functionality with localStorage
   const langToggleBtn = document.getElementById('langToggle');
+  const html = document.documentElement;
+  function setLanguage(isArabic) {
+    html.setAttribute('dir', isArabic ? 'rtl' : 'ltr');
+    html.setAttribute('lang', isArabic ? 'ar' : 'en');
+    document.querySelectorAll('.ar').forEach(el => {
+      el.classList.toggle('hidden', !isArabic);
+    });
+    document.querySelectorAll('.en').forEach(el => {
+      el.classList.toggle('hidden', isArabic);
+    });
+    updateTimeOptions(isArabic);
+    localStorage.setItem('site-lang', isArabic ? 'ar' : 'en');
+  }
+
+  // عند تحميل الصفحة: استخدم اللغة المحفوظة أو الإنجليزية كافتراضي
+  const savedLang = localStorage.getItem('site-lang');
+  if (savedLang === 'ar') {
+    setLanguage(true);
+  } else {
+    setLanguage(false);
+  }
+
   if (langToggleBtn) {
     langToggleBtn.addEventListener('click', function () {
-      const html = document.documentElement;
-      // Determine the new language after toggle
-      const willBeArabic = html.getAttribute('lang') === 'en';
-      // Set new lang and dir
-      html.setAttribute('dir', willBeArabic ? 'rtl' : 'ltr');
-      html.setAttribute('lang', willBeArabic ? 'ar' : 'en');
-      // Show/hide elements based on the new language
-      document.querySelectorAll('.ar').forEach(el => {
-        el.classList.toggle('hidden', !willBeArabic);
-      });
-      document.querySelectorAll('.en').forEach(el => {
-        el.classList.toggle('hidden', willBeArabic);
-      });
-      // Update time select options to show the OPPOSITE language
-      updateTimeOptions(!willBeArabic);
+      const isArabic = html.getAttribute('lang') !== 'ar';
+      setLanguage(isArabic);
     });
   }
 
