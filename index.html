@@ -738,6 +738,7 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 <span class="ar">التاريخ</span>
                                 <span class="en hidden">Date</span>
+                                <span class="text-red-500">*</span>
                             </label>
                             <input type="date" id="viewingDate" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
@@ -746,6 +747,7 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 <span class="ar">الوقت</span>
                                 <span class="en hidden">Time</span>
+                                <span class="text-red-500">*</span>
                             </label>
                             <select id="viewingTime" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 <option value="" id="optionSelectTime">اختر الوقت</option>
@@ -767,28 +769,55 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">
                             <span class="ar">الاسم</span>
                             <span class="en hidden">Name</span>
+                            <span class="text-red-500">*</span>
                         </label>
                         <input type="text" id="customerName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     </div>
                     
                     <div class="flex flex-col sm:flex-row items-center mb-4 gap-2">
                         <div class="flex items-center">
-                            <input type="checkbox" id="isBroker" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                            <input type="radio" id="isBroker" name="userType" value="broker" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
                             <label for="isBroker" class="mr-2 text-sm text-gray-700">
                                 <span class="ar">بروكر</span>
-                                <span class="en hidden">broker</span>
+                                <span class="en hidden">Broker</span>
                             </label>
                         </div>
                         <span class="hidden sm:inline-block mx-4 border-r h-6 border-gray-300"></span>
                         <span class="block sm:hidden w-full border-t my-2 border-gray-200"></span>
                         <div class="flex items-center">
-                            <input type="checkbox" id="isclient" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                            <label for="isclient" class="mr-2 text-sm text-gray-700">
+                            <input type="radio" id="isClient" name="userType" value="client" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <label for="isClient" class="mr-2 text-sm text-gray-700">
                                 <span class="ar">مشتري</span>
                                 <span class="en hidden">Buyer</span>
                             </label>
                         </div>
                     </div>
+                    <!-- Broker type radios, hidden unless broker is selected -->
+                    <div id="brokerTypeBox" class="hidden mb-4 ml-6">
+                        <div class="flex items-center mb-2">
+                            <input type="radio" id="freelanceBroker" name="brokerType" value="freelance" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
+                            <label for="freelanceBroker" class="mr-2 text-sm text-gray-700">
+                                <span class="ar">بروكر حر</span>
+                                <span class="en hidden">Freelance Broker</span>
+                            </label>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <input type="radio" id="companyBroker" name="brokerType" value="company" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <label for="companyBroker" class="mr-2 text-sm text-gray-700">
+                                <span class="ar">بروكر تابع شركة</span>
+                                <span class="en hidden">Company Broker</span>
+                            </label>
+                        </div>
+                        <div id="companyNameBox" class="hidden mt-2">
+                            <label for="companyName" class="block text-sm text-gray-700 mb-1">
+                                <span class="ar">اسم الشركة</span>
+                                <span class="en hidden">Company Name</span>
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="companyName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    
                     <div id="brokerClientBox" class="hidden mb-4">
                         <div class="flex items-center mb-2">
                             <input type="radio" id="hasClient" name="brokerPurpose" class="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500">
@@ -882,11 +911,25 @@
     // Show/hide broker client checkboxes
     const isBroker = document.getElementById('isBroker');
     const brokerClientBox = document.getElementById('brokerClientBox');
+    const brokerTypeBox = document.getElementById('brokerTypeBox');
+    const companyNameBox = document.getElementById('companyNameBox');
+
     isBroker.addEventListener('change', function() {
         if (isBroker.checked) {
             brokerClientBox.classList.remove('hidden');
+            brokerTypeBox.classList.remove('hidden');
         } else {
             brokerClientBox.classList.add('hidden');
+            brokerTypeBox.classList.add('hidden');
+        }
+    });
+
+    const companyBroker = document.getElementById('companyBroker');
+    companyBroker.addEventListener('change', function() {
+        if (companyBroker.checked) {
+            companyNameBox.classList.remove('hidden');
+        } else {
+            companyNameBox.classList.add('hidden');
         }
     });
     </script>

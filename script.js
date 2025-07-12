@@ -86,6 +86,19 @@ document.addEventListener('DOMContentLoaded', function () {
       updateTimeOptions(!willBeArabic);
     });
   }
+
+  const companyBroker = document.getElementById('companyBroker');
+  const companyNameInput = document.getElementById('companyName');
+  const companyNameBox = document.getElementById('companyNameBox');
+  companyBroker.addEventListener('change', function() {
+    if (companyBroker.checked) {
+      companyNameBox.classList.remove('hidden');
+      companyNameInput.setAttribute('required', 'required');
+    } else {
+      companyNameBox.classList.add('hidden');
+      companyNameInput.removeAttribute('required');
+    }
+  });
 });
 
 // Time options translation
@@ -107,4 +120,70 @@ function updateTimeOptions(isArabic) {
     const el = document.getElementById(opt.id);
     if (el) el.textContent = isArabic ? opt.ar : opt.en;
   });
-} 
+}
+
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Collect data
+  const date = document.getElementById('viewingDate').value;
+  const timeSelect = document.getElementById('viewingTime');
+  const time = timeSelect.options[timeSelect.selectedIndex].text;
+  const name = document.getElementById('customerName').value;
+  const userType = document.querySelector('input[name="userType"]:checked');
+  const isBroker = userType && userType.value === 'broker';
+  const isClient = userType && userType.value === 'client';
+  let brokerPurpose = '';
+  if (isBroker) {
+    if (document.getElementById('hasClient').checked) {
+      brokerPurpose = 'I have a client';
+    } else if (document.getElementById('viewBeforeClient').checked) {
+      brokerPurpose = 'Booking to view the apartment before showing to client';
+    }
+  }
+  // Broker type
+  let brokerType = '';
+  let companyName = '';
+  if (isBroker) {
+    const brokerTypeRadio = document.querySelector('input[name="brokerType"]:checked');
+    if (brokerTypeRadio) {
+      brokerType = brokerTypeRadio.value;
+      if (brokerType === 'company') {
+        companyName = document.getElementById('companyName').value.trim();
+      }
+    }
+  }
+
+  // Validation (remains bilingual)
+  const html = document.documentElement;
+  const isArabic = html.getAttribute('lang') === 'ar';
+  let missing = [];
+  if (!name) missing.push(isArabic ? 'الاسم' : 'Name');
+  if (!date) missing.push(isArabic ? 'التاريخ' : 'Date');
+  if (!timeSelect.value) missing.push(isArabic ? 'الوقت' : 'Time');
+  if (!userType) missing.push(isArabic ? 'نوع المستخدم (بروكر أو مشتري)' : 'User type (Broker or Buyer)');
+  if (isBroker && !brokerPurpose) missing.push(isArabic ? 'سبب المعاينة' : 'Viewing reason');
+  if (isBroker && !brokerType) missing.push(isArabic ? 'نوع البروكر' : 'Broker type');
+  if (isBroker && brokerType === 'company' && !companyName) missing.push(isArabic ? 'اسم الشركة' : 'Company name');
+  if (missing.length > 0) {
+    alert((isArabic ? 'يرجى إدخال البيانات التالية: ' : 'Please enter the following: ') + '\n' + missing.join('\n'));
+    return;
+  }
+
+  // Compose WhatsApp message in English only
+  let message = `Apartment Viewing Booking:\n`;
+  message += `Name: ${name}\n`;
+  message += `Date: ${date}\n`;
+  message += `Time: ${time}\n`;
+  if (isBroker) message += `User Type: Broker\n`;
+  if (isClient) message += `User Type: Buyer\n`;
+  if (isBroker && brokerType === 'freelance') message += `Broker Type: Freelance Broker\n`;
+  if (isBroker && brokerType === 'company') message += `Broker Type: Company Broker\n`;
+  if (isBroker && brokerType === 'company' && companyName) message += `Company Name: ${companyName}\n`;
+  if (brokerPurpose) message += `Viewing Reason: ${brokerPurpose}\n`;
+
+  // Open WhatsApp
+  const phone = '201026238072';
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+}); 
