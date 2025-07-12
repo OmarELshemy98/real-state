@@ -35,22 +35,184 @@
                 <span class="en hidden">Photo Gallery</span>
             </h2>
             
+            <!-- عنوان متغير للصورة الحالية -->
+            <h3 id="carouselTitle" class="text-xl font-semibold text-center mb-4 text-blue-700">
+                <span class="ar"></span>
+                <span class="en hidden"></span>
+            </h3>
+            
             <div class="carousel-container relative max-w-4xl mx-auto">
-                <div class="carousel-track flex transition-transform duration-500 ease-in-out" id="carouselTrack">
-                    <!-- Images will be loaded dynamically -->
-                </div>
-                
-                <button class="carousel-btn prev absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 p-2 rounded-full shadow-lg hover:bg-opacity-100 transition-all">
+                <button id="carouselPrev" class="carousel-btn prev absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 p-2 rounded-full shadow-lg hover:bg-opacity-100 transition-all z-10">
                     <i class="fas fa-chevron-left text-gray-800"></i>
                 </button>
-                
-                <button class="carousel-btn next absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 p-2 rounded-full shadow-lg hover:bg-opacity-100 transition-all">
+                <div id="carouselSlides" class="flex w-full overflow-hidden relative">
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="البلكونة" data-title-en="Balcony">
+                        <img src="images/apartment-photos/balcony/1.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="البلكونة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="الحمام الرئيسي" data-title-en="Main Bathroom">
+                        <img src="images/apartment-photos/bathroom/firstbathroom/1.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="الحمام الرئيسي">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="البلكونة" data-title-en="Balcony">
+                        <img src="images/apartment-photos/balcony/2.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="البلكونة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="البلكونة" data-title-en="Balcony">
+                        <img src="images/apartment-photos/balcony/3.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="البلكونة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="البلكونة" data-title-en="Balcony">
+                        <img src="images/apartment-photos/balcony/4.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="البلكونة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="حمام الضيوف" data-title-en="Guest Bathroom">
+                        <img src="images/apartment-photos/bathroom/secondbathroom/1.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="حمام الضيوف">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="طرقة" data-title-en="Hallway">
+                        <img src="images/apartment-photos/Hallway/1.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="طرقة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="طرقة" data-title-en="Hallway">
+                        <img src="images/apartment-photos/Hallway/4.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="طرقة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="المطبخ" data-title-en="Kitchen">
+                        <img src="images/apartment-photos/kitchen/1.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="المطبخ">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="المطبخ" data-title-en="Kitchen">
+                        <img src="images/apartment-photos/kitchen/2.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="المطبخ">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="المطبخ" data-title-en="Kitchen">
+                        <img src="images/apartment-photos/kitchen/3.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="المطبخ">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="مطبخ مفروش" data-title-en="Furnished Kitchen">
+                        <img src="images/apartment-photos/kitchen/furnishedkitchen/1.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="مطبخ مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="مطبخ مفروش" data-title-en="Furnished Kitchen">
+                        <img src="images/apartment-photos/kitchen/furnishedkitchen/2.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="مطبخ مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="الريسبشن" data-title-en="Reception">
+                        <img src="images/apartment-photos/reception/1.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="الريسبشن">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="الريسبشن" data-title-en="Reception">
+                        <img src="images/apartment-photos/reception/2.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="الريسبشن">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="الريسبشن" data-title-en="Reception">
+                        <img src="images/apartment-photos/reception/3.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="الريسبشن">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="ريسبشن مفروش" data-title-en="Furnished Reception">
+                        <img src="images/apartment-photos/reception/furnshid-reception/1.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="ريسبشن مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="ريسبشن مفروش" data-title-en="Furnished Reception">
+                        <img src="images/apartment-photos/reception/furnshid-reception/2.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="ريسبشن مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="ريسبشن مفروش" data-title-en="Furnished Reception">
+                        <img src="images/apartment-photos/reception/furnshid-reception/3.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="ريسبشن مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="ريسبشن مفروش" data-title-en="Furnished Reception">
+                        <img src="images/apartment-photos/reception/furnshid-reception/4.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="ريسبشن مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="ريسبشن مفروش" data-title-en="Furnished Reception">
+                        <img src="images/apartment-photos/reception/furnshid-reception/5.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="ريسبشن مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="ريسبشن مفروش" data-title-en="Furnished Reception">
+                        <img src="images/apartment-photos/reception/furnshid-reception/6.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="ريسبشن مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="ريسبشن مفروش" data-title-en="Furnished Reception">
+                        <img src="images/apartment-photos/reception/furnshid-reception/7.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="ريسبشن مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="ريسبشن مفروش" data-title-en="Furnished Reception">
+                        <img src="images/apartment-photos/reception/furnshid-reception/8.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="ريسبشن مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="ريسبشن مفروش" data-title-en="Furnished Reception">
+                        <img src="images/apartment-photos/reception/furnshid-reception/9.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="ريسبشن مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="ريسبشن مفروش" data-title-en="Furnished Reception">
+                        <img src="images/apartment-photos/reception/furnshid-reception/10.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="ريسبشن مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="ريسبشن مفروش" data-title-en="Furnished Reception">
+                        <img src="images/apartment-photos/reception/furnshid-reception/11.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="ريسبشن مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="ريسبشن مفروش" data-title-en="Furnished Reception">
+                        <img src="images/apartment-photos/reception/furnshid-reception/12.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="ريسبشن مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="ريسبشن مفروش" data-title-en="Furnished Reception">
+                        <img src="images/apartment-photos/reception/furnshid-reception/13.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="ريسبشن مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="ريسبشن مفروش" data-title-en="Furnished Reception">
+                        <img src="images/apartment-photos/reception/furnshid-reception/14.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="ريسبشن مفروش">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="غرفة أولى" data-title-en="First Room">
+                        <img src="images/apartment-photos/rooms/firstroom/1.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="غرفة أولى">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="غرفة أولى" data-title-en="First Room">
+                        <img src="images/apartment-photos/rooms/firstroom/2.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="غرفة أولى">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="غرفة أولى (فرعية)" data-title-en="First Room (Sub)">
+                        <img src="images/apartment-photos/rooms/firstroom/firstroom/1.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="غرفة أولى (فرعية)">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="غرفة أولى (فرعية)" data-title-en="First Room (Sub)">
+                        <img src="images/apartment-photos/rooms/firstroom/firstroom/2.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="غرفة أولى (فرعية)">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="غرف إضافية" data-title-en="Extra Rooms">
+                        <img src="images/apartment-photos/rooms/rooms/3.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="غرف إضافية">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="غرف إضافية" data-title-en="Extra Rooms">
+                        <img src="images/apartment-photos/rooms/rooms/5.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="غرف إضافية">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="غرف إضافية" data-title-en="Extra Rooms">
+                        <img src="images/apartment-photos/rooms/rooms/6.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="غرف إضافية">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="غرفة ثانية" data-title-en="Second Room">
+                        <img src="images/apartment-photos/rooms/secondroom/1.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="غرفة ثانية">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="غرفة ثانية" data-title-en="Second Room">
+                        <img src="images/apartment-photos/rooms/secondroom/2.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="غرفة ثانية">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="غرفة ثالثة" data-title-en="Third Room">
+                        <img src="images/apartment-photos/rooms/thirdroom/1.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="غرفة ثالثة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="الإطلالة" data-title-en="View">
+                        <img src="images/apartment-photos/view/1.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="الإطلالة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="الإطلالة" data-title-en="View">
+                        <img src="images/apartment-photos/view/2.png" class="w-full h-[400px] object-cover rounded-xl" alt="الإطلالة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="الإطلالة" data-title-en="View">
+                        <img src="images/apartment-photos/view/3.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="الإطلالة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="باب الشقة" data-title-en="Apartment Door">
+                        <img src="images/apartment-photos/view/appartment-door-1.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="باب الشقة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="باب الشقة" data-title-en="Apartment Door">
+                        <img src="images/apartment-photos/view/appartment-door.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="باب الشقة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="مدخل العمارة" data-title-en="Building Entryway">
+                        <img src="images/apartment-photos/view/Building-entryway-1.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="مدخل العمارة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="مدخل العمارة" data-title-en="Building Entryway">
+                        <img src="images/apartment-photos/view/Building-entryway-2.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="مدخل العمارة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="مدخل العمارة" data-title-en="Building Entryway">
+                        <img src="images/apartment-photos/view/Building-entryway-3.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="مدخل العمارة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="مدخل العمارة" data-title-en="Building Entryway">
+                        <img src="images/apartment-photos/view/Building-entryway-4.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="مدخل العمارة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="المصاعد" data-title-en="Elevators">
+                        <img src="images/apartment-photos/view/elevators.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="المصاعد">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="جانب العمارة (يسار)" data-title-en="Building Left Side">
+                        <img src="images/apartment-photos/view/leftside.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="جانب العمارة (يسار)">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="جانب العمارة (يمين)" data-title-en="Building Right Side">
+                        <img src="images/apartment-photos/view/rightside.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="جانب العمارة (يمين)">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="الإطلالة" data-title-en="View">
+                        <img src="images/apartment-photos/view/2.png" class="w-full h-[400px] object-cover rounded-xl" alt="الإطلالة">
+                    </div>
+                    <div class="carousel-slide w-full flex-shrink-0" data-title-ar="الإطلالة" data-title-en="View">
+                        <img src="images/apartment-photos/view/3.jpg" class="w-full h-[400px] object-cover rounded-xl" alt="الإطلالة">
+                    </div>
+                </div>
+                <button id="carouselNext" class="carousel-btn next absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 p-2 rounded-full shadow-lg hover:bg-opacity-100 transition-all z-10">
                     <i class="fas fa-chevron-right text-gray-800"></i>
                 </button>
-                
-                <div class="carousel-dots flex justify-center mt-4 space-x-2" id="carouselDots">
-                    <!-- Dots will be generated dynamically -->
-                </div>
+                <div id="carouselDots" class="carousel-dots flex justify-center mt-4 space-x-2"></div>
             </div>
         </div>
     </section>
